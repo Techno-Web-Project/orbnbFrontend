@@ -18,9 +18,9 @@ function CardItem(props) {
   
   return (
     <>
-      <ul>
+      <ul className="cards__item">
         {houses.map(house=> (
-          <li key={house.id} className="cards__item">
+          <li key={house.id} className="cards__individuelle">
               <Link className="cards__item__link" to={props.path}>
                   <figure className="cards__item__pic-wrap" data-category={props.label}>
                     <img src={props.src} alt="Travel"
@@ -28,6 +28,7 @@ function CardItem(props) {
                   </figure>
                   <div className="cards__item__info">
                     <h5 className="cards__item__text">{house.description}</h5>
+                    <h5 className="cards__item__SmallText">{house.city} {house.country}</h5>
                   </div>
               </Link>
           </li>

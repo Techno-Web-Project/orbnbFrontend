@@ -10,16 +10,20 @@
   
   .cards__container {
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     max-width: 1120px;
     width: 90%;
-    margin: 0 auto;
+    margin: 0px auto;
   }
   
   .cards__wrapper {
     position: relative;
     margin: 50px 0 45px;
+  }
+
+  .cards__individuelle {
+    margin: 30px;
   }
   
   .cards__items {
@@ -45,6 +49,7 @@
     text-decoration: none;
   }
   
+
   .cards__item__pic-wrap {
     position: relative;
     width: 100%;
