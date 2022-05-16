@@ -10,7 +10,6 @@
   
   .cards__container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     max-width: 1120px;
     width: 90%;
@@ -26,12 +25,9 @@
     margin: 30px;
   }
   
-  .cards__items {
-    margin-bottom: 24px;
-  }
-  
   .cards__item {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
