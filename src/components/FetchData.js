@@ -17,11 +17,16 @@ function FetchData() {
 
     return (
         <div>
-            <h1 align="center">React-App</h1>
+            <h1 align="center">Houses</h1>
             <ul>
                 {houses.map(house=> (
-                <div>
-                    <li key={house.id}>{house.description}</li>
+                <div className='houseDiv'>
+                    <li key={house.id}>
+                        <div className="houseOfCard">
+                            <h3>{house.description}</h3>
+                            <h4>{house.city} {house.city} {house.street} {house.postalCode}</h4>
+                        </div>
+                    </li>
                 </div>
                 ))}
             </ul>
