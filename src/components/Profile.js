@@ -2,27 +2,32 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function Profile() {
-  const [personnes, setPersonnes] = useState([])
+  const [person, setPerson] = useState('')
+  const id = 3
 
     useEffect(() => {
-        axios.get('http://localhost:8080/personApi/persons')
+        axios.get(`http://localhost:8081/SpringMVC/personApi/getPersonById/${id}`)
         .then(res => {
             console.log(res)
-            setPersonnes(res.data)
+            setPerson(res.data)
         })
         .catch(err => {
             console.log(err)
         })
-    }, [])
+    }, '')
 
     return (
-        <div>
-            <h1 align="center">React-App</h1>
-            <ul>
-                {personnes.map(personne=> (
-                <div><li key={personne.id}>{personne.firstName} {personne.lastName} {personne.login} {personne.email} {personne.phoneNumber}</li></div>
-                ))}
-            </ul>
+        <div className='profile-div'>
+            <h1 align="center">Profile</h1>
+            <img className='profile-pic' src="images/profile-pic-test.png" alt="Profile" />
+            <div className="profileTextDiv">
+                <h2 className='profileText'>{person.firstName}</h2>
+                <h2 className='profileText'>{person.lastName}</h2>
+                <h2 className='profileText'>{person.login}</h2>
+                <h2 className='profileText'>{person.phoneNumber}</h2>
+                <h2 className='profileText'>{person.email}</h2>
+                <h2 className='profileText'>{person.password}</h2>
+            </div>
         </div>
     )
 }

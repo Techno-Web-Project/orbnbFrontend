@@ -1,0 +1,37 @@
+.promotionalCards {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.explorerText {
+    text-align: left;
+    font-size: 40px;
+}
+
+.splitCards {
+    padding: 4rem;
+    width: 1500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.splitTextCards {
+    padding-right: 100px;
+}
+
+.explorerButton {
+    color: white;
+    background-color: #222222;
+    font-size: 15px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    appearance: none;
+    outline: none;
+    border: 0px;
+    margin-top: 30px;
+}
+
+.promotionalCards img {
+    width: 1000px;
+}

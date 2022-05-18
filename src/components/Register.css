@@ -26,8 +26,9 @@ form {
     padding-bottom: 1rem;
 }
 
-h1 {
+section h1 {
     margin-bottom: 0px;
+    text-align: center;
 }
 
 section a, section a:visited {

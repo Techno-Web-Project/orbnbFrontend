@@ -35,7 +35,14 @@ html {
     display: flex;
     align-items: center;
   }
-  
+
+  .imgNavbar {
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 100%;
+  }
+
   .fa-typo3 {
     margin-left: 0.5rem;
     font-size: 1.8rem;
