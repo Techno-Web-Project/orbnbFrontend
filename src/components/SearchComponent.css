@@ -33,7 +33,9 @@
 
 .search-element:nth-child(3) {
     flex: 2;
-
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
 
 .minus-plus {
@@ -41,14 +43,17 @@
 }
 
 .search-h2 {
-    font-size: 30px;
+    font-size: 27px;
+    margin-block: 3px;
 }
 
 .search-h3 {
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .search-h4 {
     font-size: 15px;
     font-weight: 300;
+    margin-right: 10px;
 }
