@@ -6,7 +6,7 @@ function Profile() {
   const id = 3
 
     useEffect(() => {
-        axios.get(`http://localhost:8081/SpringMVC/personApi/getPersonById/${id}`)
+        axios.get(`http://localhost:8081/personApi/getPersonById/${id}`)
         .then(res => {
             console.log(res)
             setPerson(res.data)

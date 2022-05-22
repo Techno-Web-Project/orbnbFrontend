@@ -6,7 +6,7 @@ function CardItem(props) {
   const [houses, setHouses] = useState([])
 
   useEffect(() => {
-      axios.get('http://localhost:8081/SpringMVC/housing/retrieve-all-housings')
+      axios.get('http://localhost:8081/housingApi/getAllHousings')
       .then(res => {
           console.log(res)
           setHouses(res.data)
