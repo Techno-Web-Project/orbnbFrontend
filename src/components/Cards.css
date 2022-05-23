@@ -33,6 +33,23 @@
   border-radius: 10px;
 }
 
+.bottomCards {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.iconCards {
+  color:#252e48;
+  display: flex;
+  align-items: center;
+}
+
+.iconCards svg {
+  margin-left: 3px;
+}
+
 .cards__item__link {
   display: flex;
   flex-flow: column;
@@ -108,7 +125,6 @@
 
 .stars {
   display: flex;
-  margin-top: 10px;
 }
 
 @media only screen and (min-width: 1200px) {

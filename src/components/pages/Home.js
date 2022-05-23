@@ -9,7 +9,7 @@ import { useState } from 'react';
 function Home() {
 
     const[searchTerm, setSearchTerm] = useState('...')
-    const[searchBeds, setBeds] = useState(0)
+    const[searchBeds, setBeds] = useState(1)
 
     return (
         <>

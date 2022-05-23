@@ -38,7 +38,7 @@ function SearchComponent(props) {
             <div className="minus-plus">
                 <button className='search-button'
                     onClick={() => {
-                        if (props.searchedBeds > 0) {props.addBeds(props.searchedBeds - 1)};
+                        if (props.searchedBeds > 1) {props.addBeds(props.searchedBeds - 1)};
                     }}
                 >moins</button>
                 <button className='search-button'
