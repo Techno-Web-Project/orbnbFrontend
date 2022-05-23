@@ -1,8 +1,22 @@
 import React from 'react'
 import './SearchComponent.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function SearchComponent(props) {
+
+    const [city, setCity] = useState('Monaco');
+    const cities = ['Monaco', 'Paris', 'Nice', 'Nantes', 'Marseille', 'Toulouse', 'Lyon', 'Montpellier', 'Strasbourg', 'Bordeaux', 'Lille', 'Rennes', 'Lens', 'Reims', 'Le Havre', 'Toulon', 'Grenoble', 'Dijon', 'Angers', 'Nîmes'];
+
+    useEffect(() => {
+        const intervalID = setInterval(() => {
+            setCity(city => cities[Math.floor(Math.random() * cities.length)]);
+        }, 2000)
+
+        return () => {
+            clearInterval(intervalID);
+        }
+
+    }, [])
 
   return (
     <div className='search-component'>
@@ -11,7 +25,7 @@ function SearchComponent(props) {
             <input 
                 className='search-input' 
                 type="text" 
-                placeholder="Monaco" 
+                placeholder={city} 
                 onChange={event => {
                     props.changeTerm(event.target.value);
                 }}
