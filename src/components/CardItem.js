@@ -42,7 +42,15 @@ function CardItem(props) {
   return (
     <>
       <ul className="cards__item">
-        {houses.map(house=> (
+        {houses.filter((house)=> {
+          if(props.searchedCity2 == "") {
+            return house
+          } else if (house.city.toLowerCase().includes(props.searchedCity2.toLowerCase())) {
+            return house
+          } else if (props.searchedCity2 == "...") {
+            return house
+          }
+        }).map(house => (
           <li key={house.id} className="cards__individuelle">
               <Link className="cards__item__link" to={props.path}>
                   <figure className="cards__item__pic-wrap" data-category={props.label}>
