@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function Profile() {
   const [person, setPerson] = useState('')
-  const id = 3
+  const id = 1
 
     useEffect(() => {
         axios.get(`http://localhost:8081/personApi/getPersonById/${id}`)

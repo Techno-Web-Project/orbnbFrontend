@@ -10,11 +10,12 @@ function Cards(props) {
             <div className="card__wrapper">
                 <ul className='cards__items'>
                     <CardItem 
-                    src="images/img-home.jpg"
-                    text="Découvrez cette magnifique propriété située dans le centre de Sydney"
-                    label='Maison'
-                    path='/Reservations'
-                    searchedCity2= {props.searchedCity}
+                      src="images/img-home.jpg"
+                      text="Découvrez cette magnifique propriété située dans le centre de Sydney"
+                      label='Maison'
+                      path='/Reservations'
+                      searchedCity2= {props.searchedCity}
+                      searchedBeds2= {props.searchedBeds}
                     />
                 </ul>
             </div>

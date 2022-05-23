@@ -43,11 +43,11 @@ function CardItem(props) {
     <>
       <ul className="cards__item">
         {houses.filter((house)=> {
-          if(props.searchedCity2 == "") {
+          if(props.searchedCity2 == "" && props.searchedBeds2 == 0) {
             return house
-          } else if (house.city.toLowerCase().includes(props.searchedCity2.toLowerCase())) {
+          } else if (house.city.toLowerCase().includes(props.searchedCity2.toLowerCase()) && house.numberOfBed >= props.searchedBeds2) {
             return house
-          } else if (props.searchedCity2 == "...") {
+          } else if (props.searchedCity2 == "..." && props.searchedBeds2 == 0) {
             return house
           }
         }).map(house => (

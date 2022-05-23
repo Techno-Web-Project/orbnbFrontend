@@ -9,12 +9,17 @@ import { useState } from 'react';
 function Home() {
 
     const[searchTerm, setSearchTerm] = useState('...')
+    const[searchBeds, setBeds] = useState(0)
 
     return (
         <>
             <HeroSection />
-            <SearchComponent changeTerm={searchTerm => setSearchTerm(searchTerm)} />
-            <Cards searchedCity={searchTerm} />
+            <SearchComponent
+                changeTerm={searchTerm => setSearchTerm(searchTerm)}
+                addBeds={searchBeds => setBeds(searchBeds)}
+                searchedBeds={searchBeds}
+            />
+            <Cards searchedCity={searchTerm} searchedBeds={searchBeds}/>
             <PromotionalCards />
         </>
     )
