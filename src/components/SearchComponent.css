@@ -57,3 +57,14 @@
     font-weight: 300;
     margin-right: 10px;
 }
+
+.search-input {
+    font-size: 27px;
+    margin-block: 3px;
+    color: black;
+    appearance: none;
+    outline: none;
+    border: 0px;
+    font-weight: 600;
+    width: 150px;
+}

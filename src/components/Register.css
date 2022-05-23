@@ -35,8 +35,8 @@ section a, section a:visited {
     color: #FD5951;
 }
 
-input[type="text"],
-input[type="password"],
+form >input[type="text"],
+form > input[type="password"],
 button,
 textarea {
   font-size: 22px;

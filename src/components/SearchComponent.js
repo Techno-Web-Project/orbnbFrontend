@@ -1,12 +1,21 @@
 import React from 'react'
 import './SearchComponent.css';
+import { useState } from 'react';
 
-function SearchComponent() {
+function SearchComponent(props) {
+
   return (
     <div className='search-component'>
         <div className="search-element">
             <h3 className='search-h3'>VILLE</h3>
-            <h2 className='search-h2'>Monaco</h2>
+            <input 
+                className='search-input' 
+                type="text" 
+                placeholder="Monaco" 
+                onChange={event => {
+                    props.changeTerm(event.target.value);
+                }}
+            />
             <h4 className='search-h4'>France</h4>
         </div>
         <div className="search-element">

@@ -4,13 +4,17 @@ import Cards from '../Cards';
 import HeroSection from '../HeroSection';
 import PromotionalCards from '../PromotionalCards';
 import SearchComponent from '../SearchComponent';
+import { useState } from 'react';
 
 function Home() {
+
+    const[searchTerm, setSearchTerm] = useState('...')
+
     return (
         <>
             <HeroSection />
-            <SearchComponent />
-            <Cards />
+            <SearchComponent changeTerm={searchTerm => setSearchTerm(searchTerm)} />
+            <Cards searchedCity={searchTerm} />
             <PromotionalCards />
         </>
     )
