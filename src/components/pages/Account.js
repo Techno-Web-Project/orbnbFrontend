@@ -1,13 +1,13 @@
-import React from 'react'
-import Profile from '../Profile'
-import '../Profile.css'
+import React from 'react';
+import Profile from '../Profile';
+import '../Profile.css';
 
 function Account() {
   return (
     <div>
-      <Profile/>
+      <Profile />
     </div>
-  )
+  );
 }
 
-export default Account
+export default Account;

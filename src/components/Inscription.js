@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function Inscription() {
-  return (
-    <div>Inscription</div>
-  )
+  return <div>Inscription</div>;
 }
 
-export default Inscription
+export default Inscription;

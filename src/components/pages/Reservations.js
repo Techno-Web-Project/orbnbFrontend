@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import '../../App.css';
 import FetchData from '../FetchData';
 
 function Reservations() {
   return (
     <div>
-        <FetchData />
+      <FetchData />
     </div>
-  )
+  );
 }
 
-export default Reservations
+export default Reservations;
