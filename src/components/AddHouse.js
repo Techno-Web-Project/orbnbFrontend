@@ -11,6 +11,7 @@ function AddHouse() {
   const [postalCode, setPostalCode] = useState('');
   const [housingType, setHousingTYpe] = useState('');
   const [numberOfBed, setNumberOfBed] = useState(0);
+  const [ownerId, setOwnerId] = useState(1);//TODO set l'id de la session
 
   const [housing, setHousing] = useState('');
 
@@ -33,7 +34,7 @@ function AddHouse() {
         validate: false,
         housingType: 'HOUSE',
         numberOfBed: numberOfBed,
-        person: 1, //TODO set l'id de la session
+        person: ownerId, 
       })
       .then((res) => {
         console.log(res.data.id);
