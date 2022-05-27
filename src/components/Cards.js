@@ -29,17 +29,19 @@ function Cards(props) {
             {houses
               .filter((house) => {
                 if (
-                  (props.searchedCity == '' || props.searchedCity == '...') &&
-                  props.searchedBeds == 1
+                  (props.searchedCity === '' || props.searchedCity === '...') &&
+                  props.searchedBeds === 1
                 ) {
                   return house;
                 } else if (
                   (house.city
                     .toLowerCase()
                     .includes(props.searchedCity.toLowerCase()) ||
-                    props.searchedCity == '...') &&
+                    props.searchedCity === '...') &&
                   house.numberOfBed >= props.searchedBeds
                 ) {
+                  return house;
+                } else {
                   return house;
                 }
               })
