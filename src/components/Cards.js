@@ -43,20 +43,25 @@ function Cards(props) {
                   return house;
                 }
               })
-              .map((house) => (
-                <CardItem
-                  id={house.id}
-                  src={`images/${house.housingPictures[0].fileLocalisation}`}
-                  text="Découvrez cette magnifique propriété située dans le centre de Sydney"
-                  label="Maison"
-                  path="/Reservations"
-                  description={house.description}
-                  city={house.city}
-                  country={house.country}
-                  numberOfBed={house.numberOfBed}
-                  rating={4}
-                />
-              ))}
+              .map((house) => {
+                const thumbnail = house.housingPictures[0]
+                  ? `images/${house.housingPictures[0].fileLocalisation}`
+                  : 'images/img-home-thumbnail.jpg';
+                return (
+                  <CardItem
+                    id={house.id}
+                    src={thumbnail}
+                    text="Découvrez cette magnifique propriété située dans le centre de Sydney"
+                    label="Maison"
+                    path="/Reservations"
+                    description={house.description}
+                    city={house.city}
+                    country={house.country}
+                    numberOfBed={house.numberOfBed}
+                    rating={4}
+                  />
+                );
+              })}
           </ul>
         </div>
       </div>
