@@ -42,7 +42,7 @@ function Cards(props) {
                 ) {
                   return house;
                 } else {
-                  return house;
+                  return null;
                 }
               })
               .map((house) => {
