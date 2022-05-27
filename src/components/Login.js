@@ -1,65 +1,47 @@
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from './context/AuthProvider';
+import { useState, useEffect, useContext } from 'react';
 import './Register.css';
 import './Button.css';
 
 import axios from './api/axios';
-const LOGIN_URL = '/getAllPersons';
 
-const Login = () => {
-  const { setAuth } = useContext(AuthContext);
-  const userRef = useRef();
-  const errRef = useRef();
+function Login() {
+  const [person, setPerson] = useState('');
 
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
-  const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  let verified = 'false';
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const HandleSubmit = async (e) => {
+    useEffect(() => {
+      const getData = async () => {
+        const data = await axios.get(
+          `http://localhost:8081/personApi/getPersonByLogin/${user}`
+        );
+        setPerson(data);
+      };
+    }, '');
 
-  useEffect(() => {
-    setErrMsg('');
-  }, [user, pwd]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response));
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ user, pwd, roles, accessToken });
-      setUser('');
-      setPwd('');
+    if (person.password == pwd) {
       setSuccess(true);
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg('No Server Response');
-      } else if (err.response?.status === 400) {
-        setErrMsg('Missing Username or Password');
-      } else if (err.response?.status === 401) {
-        setErrMsg('Unauthorized');
-      } else {
-        setErrMsg('Login Failed');
-      }
-      errRef.current.focus();
     }
   };
 
+  console.log(person.password);
+  console.log(pwd);
+  console.log(user);
+
+  let successString = 'no value';
+
+  if (success == true) {
+    successString = 'true';
+  } else {
+    successString = 'false';
+  }
+
   return (
     <div className="Register">
+      <h1>{successString}</h1>
       {success ? (
         <section>
           <h1>You are logged in!</h1>
@@ -70,20 +52,12 @@ const Login = () => {
         </section>
       ) : (
         <section>
-          <p
-            ref={errRef}
-            className={errMsg ? 'errmsg' : 'offscreen'}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
           <h1>Connecte-toi</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={HandleSubmit}>
             <label htmlFor="username">Login</label>
             <input
               type="text"
               id="username"
-              ref={userRef}
               autoComplete="off"
               onChange={(e) => setUser(e.target.value)}
               value={user}
@@ -103,7 +77,6 @@ const Login = () => {
           <p>
             Pas de compte ?<br />
             <span className="line">
-              {/*put router link here*/}
               <a href="/inscription">Inscription</a>
             </span>
           </p>
@@ -111,6 +84,6 @@ const Login = () => {
       )}
     </div>
   );
-};
+}
 
 export default Login;
