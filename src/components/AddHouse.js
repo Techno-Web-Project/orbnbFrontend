@@ -9,7 +9,7 @@ function AddHouse(props) {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [postalCode, setPostalCode] = useState('');
-  const [housingType, setHousingTYpe] = useState('');
+  const [housingType, setHousingTYpe] = useState('HOUSE');
   const [numberOfBed, setNumberOfBed] = useState(0);
   let housingId = 0;
 
