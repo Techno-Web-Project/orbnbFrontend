@@ -15,6 +15,7 @@ import VosBiens from './components/pages/VosBiens';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
+  const [connectedId, setConnectedId] = useState(null);
 
   return (
     <>
@@ -30,6 +31,8 @@ function App() {
                   setConnectedUser(connectedUser)
                 }
                 connectedUser={connectedUser}
+                setConnectedId={(connectedId) => setConnectedId(connectedId)}
+                connectedId={connectedId}
               />
             }
           />
@@ -49,10 +52,7 @@ function App() {
             path="/vosbiens"
             element={<VosBiens connectedUser={connectedUser} />}
           />
-          <Route
-            path="/add"
-            element={<AddPage connectedUser={connectedUser} />}
-          />
+          <Route path="/add" element={<AddPage connectedId={connectedId} />} />
           <Route path="/add_note" element={<AddHousingNotePage />} />
         </Routes>
       </Router>

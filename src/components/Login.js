@@ -23,9 +23,11 @@ function Login(props) {
       console.log('connected');
       setSuccess(true);
       props.setConnectedUser(person.login);
+      props.setConnectedId(person.id);
     } else {
       console.log('not connected');
       props.setConnectedUser(null);
+      props.setConnectedId(null);
     }
   };
 
@@ -33,6 +35,7 @@ function Login(props) {
     e.preventDefault();
     setSuccess(false);
     props.setConnectedUser(null);
+    props.setConnectedId(null);
     console.log('not connected');
   };
 

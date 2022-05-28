@@ -1,10 +1,10 @@
 import React from 'react';
 import AddHouse from '../AddHouse';
 
-function AddPage() {
+function AddPage(props) {
   return (
     <>
-      <AddHouse />
+      <AddHouse connectedId={props.connectedId} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import './AddHouse.css';
 import { useState, useEffect, useContext } from 'react';
 import axios from './api/axios';
 
-function AddHouse() {
+function AddHouse(props) {
   const [description, setDescription] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
@@ -11,10 +11,7 @@ function AddHouse() {
   const [postalCode, setPostalCode] = useState('');
   const [housingType, setHousingTYpe] = useState('');
   const [numberOfBed, setNumberOfBed] = useState(0);
-  const [ownerId, setOwnerId] = useState(1); //TODO set l'id de la session
   let housingId = 0;
-
-  const [housing, setHousing] = useState('');
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -26,9 +23,9 @@ function AddHouse() {
         country: country,
         postalCode: postalCode,
         validate: false,
-        housingType: 'HOUSE',
+        housingType: housingType,
         numberOfBed: numberOfBed,
-        person: ownerId,
+        person: props.connectedId,
       })
       .then((res) => {
         console.log(res.data.id);
@@ -39,7 +36,7 @@ function AddHouse() {
       });
     await axios
       .put(
-        `http://localhost:8081/personApi/assignHousing/${ownerId}/${housingId}`
+        `http://localhost:8081/personApi/assignHousing/${props.connectedId}/${housingId}`
       )
       .then((res) => {
         console.log(res);
