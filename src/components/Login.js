@@ -46,7 +46,6 @@ function Login(props) {
             <a href="#" onClick={handleLogout}>
               Logout
             </a>
-            <a href="#">Go to Home</a>
           </p>
         </section>
       ) : (

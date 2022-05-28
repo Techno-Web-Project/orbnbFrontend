@@ -11,6 +11,7 @@ import AddPage from './components/pages/AddPage';
 import Inscription from './components/pages/Inscription';
 import AddHousingNotePage from './components/pages/AddHousingNotePage';
 import Footer from './components/Footer';
+import VosBiens from './components/pages/VosBiens';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -43,6 +44,10 @@ function App() {
           <Route
             path="/account"
             element={<Account connectedUser={connectedUser} />}
+          />
+          <Route
+            path="/vosbiens"
+            element={<VosBiens connectedUser={connectedUser} />}
           />
           <Route
             path="/add"
