@@ -11,19 +11,13 @@ function AddHouse() {
   const [postalCode, setPostalCode] = useState('');
   const [housingType, setHousingTYpe] = useState('');
   const [numberOfBed, setNumberOfBed] = useState(0);
-  const [ownerId, setOwnerId] = useState(1);//TODO set l'id de la session
+  const [ownerId, setOwnerId] = useState(1); //TODO set l'id de la session
+  let housingId = 0;
 
   const [housing, setHousing] = useState('');
 
-  const HandleSubmit = async (e) => {
+  const PostRequest = async (e) => {
     e.preventDefault();
-    console.log(description);
-    console.log(street);
-    console.log(city);
-    console.log(country);
-    console.log(postalCode);
-    console.log(housingType);
-    console.log(numberOfBed);
     await axios
       .post('http://localhost:8081/housingApi/addHousing', {
         description: description,
@@ -34,21 +28,37 @@ function AddHouse() {
         validate: false,
         housingType: 'HOUSE',
         numberOfBed: numberOfBed,
-        person: ownerId, 
+        person: ownerId,
       })
       .then((res) => {
         console.log(res.data.id);
+        housingId = res.data.id;
       })
       .catch((error) => {
         console.log(error);
       });
+    PutRequest();
   };
+
+  async function PutRequest() {
+    await axios
+      .put(
+        `http://localhost:8081/personApi/assignHousing/${ownerId}/${housingId}`
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(housingId);
+  }
 
   return (
     <div className="Register">
       <section>
         <h1>Ajouter un logement</h1>
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={PostRequest}>
           <label htmlFor="description">Description</label>
           <input
             type="text"
