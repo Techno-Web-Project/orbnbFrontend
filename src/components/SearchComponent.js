@@ -45,7 +45,7 @@ function SearchComponent(props) {
   }
 
   return (
-    <div className="search-component">
+    <div className="search-component" id="searchComponent">
       <div className="search-element">
         <h3 className="search-h3">VILLE</h3>
         <input
