@@ -10,6 +10,7 @@ import Account from './components/pages/Account';
 import AddPage from './components/pages/AddPage';
 import Inscription from './components/pages/Inscription';
 import AddHousingNotePage from './components/pages/AddHousingNotePage';
+import Footer from './components/Footer';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -50,6 +51,7 @@ function App() {
           <Route path="/add_note" element={<AddHousingNotePage />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }
