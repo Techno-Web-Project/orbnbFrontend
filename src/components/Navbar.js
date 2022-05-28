@@ -108,11 +108,7 @@ function Navbar(props) {
               )}
             </li>
             <li className="nav-item">
-              <Link
-                to="/recherche"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Recherche
               </Link>
             </li>

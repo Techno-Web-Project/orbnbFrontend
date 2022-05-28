@@ -23,6 +23,7 @@ function App() {
         <Navbar connectedUser={connectedUser} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/acceuil" element={<Home />} />
           <Route
             path="/connexion"
             element={
