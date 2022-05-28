@@ -16,7 +16,7 @@ function AddHouse() {
 
   const [housing, setHousing] = useState('');
 
-  const PostRequest = async (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
     await axios
       .post('http://localhost:8081/housingApi/addHousing', {
@@ -37,28 +37,24 @@ function AddHouse() {
       .catch((error) => {
         console.log(error);
       });
-    PutRequest();
-  };
-
-  async function PutRequest() {
     await axios
       .put(
         `http://localhost:8081/personApi/assignHousing/${ownerId}/${housingId}`
       )
       .then((res) => {
         console.log(res);
+        console.log(housingId);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(housingId);
-  }
+  };
 
   return (
     <div className="Register">
       <section>
         <h1>Ajouter un logement</h1>
-        <form onSubmit={PostRequest}>
+        <form onSubmit={HandleSubmit}>
           <label htmlFor="description">Description</label>
           <input
             type="text"
