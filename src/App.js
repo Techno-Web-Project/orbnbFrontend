@@ -8,6 +8,7 @@ import Reservations from './components/pages/Reservations';
 import Account from './components/pages/Account';
 import AddPage from './components/pages/AddPage';
 import Inscription from './components/pages/Inscription';
+import AddHousingNotePage from './components/pages/AddHousingNotePage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/account" element={<Account />} />
           <Route path="/add" element={<AddPage />} />
+          <Route path="/add_note" element={<AddHousingNotePage />} />
         </Routes>
       </Router>
     </>
