@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Button.css';
 
-function Profile() {
+function Profile(props) {
   const [person, setPerson] = useState('');
-  const id = 1;
 
   //const dispatch = useDispatch()
   //const [imagePreview, setImagePreview] = useState(null)
@@ -13,7 +12,9 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8081/personApi/getPersonById/${id}`)
+      .get(
+        `http://localhost:8081/personApi/getPersonByLogin/${props.connectedUser}`
+      )
       .then((res) => {
         console.log(res);
         setPerson(res.data);

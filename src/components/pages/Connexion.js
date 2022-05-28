@@ -3,10 +3,16 @@ import '../../App.css';
 import Login from '../Login';
 import Register from '../Register';
 
-function Connexion() {
+function Connexion(props) {
+  let connectedUser = props.connectedUser;
   return (
     <>
-      <Login />
+      <Login
+        setConnectedUser={(connectedUser) =>
+          props.setConnectedUser(connectedUser)
+        }
+        connectedUser={connectedUser}
+      />
     </>
   );
 }

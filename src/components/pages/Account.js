@@ -2,10 +2,10 @@ import React from 'react';
 import Profile from '../Profile';
 import '../Profile.css';
 
-function Account() {
+function Account(props) {
   return (
     <div>
-      <Profile />
+      <Profile connectedUser={props.connectedUser} />
     </div>
   );
 }

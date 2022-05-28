@@ -4,49 +4,48 @@ import './Button.css';
 
 import axios from './api/axios';
 
-function Login() {
+function Login(props) {
   const [person, setPerson] = useState('');
 
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [success, setSuccess] = useState(false);
-  let verified = 'false';
 
-  const HandleSubmit = async (e) => {
-    useEffect(() => {
-      const getData = async () => {
-        const data = await axios.get(
-          `http://localhost:8081/personApi/getPersonByLogin/${user}`
-        );
-        setPerson(data);
-      };
-    }, '');
-
-    if (person.password == pwd) {
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(`http://localhost:8081/personApi/getPersonByLogin/${user}`)
+      .then((res) => {
+        console.log(res.data);
+        setPerson(res.data);
+      });
+    if (person.password == pwd && person.login == user) {
+      console.log('connected');
       setSuccess(true);
+      props.setConnectedUser(person.login);
+    } else {
+      console.log('not connected');
+      props.setConnectedUser(null);
     }
   };
 
-  console.log(person.password);
-  console.log(pwd);
-  console.log(user);
-
-  let successString = 'no value';
-
-  if (success == true) {
-    successString = 'true';
-  } else {
-    successString = 'false';
-  }
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setSuccess(false);
+    props.setConnectedUser(null);
+    console.log('not connected');
+  };
 
   return (
     <div className="Register">
-      <h1>{successString}</h1>
-      {success ? (
+      {success || props.connectedUser != null ? (
         <section>
           <h1>You are logged in!</h1>
           <br />
           <p>
+            <a href="#" onClick={handleLogout}>
+              Logout
+            </a>
             <a href="#">Go to Home</a>
           </p>
         </section>

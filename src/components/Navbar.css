@@ -78,6 +78,11 @@ html {
   transition: all 0.2s ease-out;
 }
 
+.svgAccount {
+  margin-right: 10px;
+  fill: #222222;
+}
+
 .fa-bars {
   color: #fd5951;
 }
@@ -144,6 +149,10 @@ ul {
     transform: translate(25%, 50%);
   }
 
+  .svgAccount {
+    fill: #fff;
+  }
+
   .menu-icon {
     display: block;
     position: absolute;
@@ -172,6 +181,7 @@ ul {
     padding: 14px 20px;
     border: 1px solid #fff;
     transition: all 0.3s ease-out;
+    fill: #fff;
   }
 
   .nav-links-mobile:hover {

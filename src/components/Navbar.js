@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -24,7 +24,11 @@ function Navbar() {
 
   window.addEventListener('resize', showButton);
 
-  let connected = true;
+  let connected = false;
+
+  if (props.connectedUser != null) {
+    connected = true;
+  }
 
   return (
     <>
@@ -82,22 +86,26 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/reservations"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Réservations
-              </Link>
+              {connected && (
+                <Link
+                  to="/reservations"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Réservations
+                </Link>
+              )}
             </li>
             <li className="nav-item">
-              <Link
-                to="/messages"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Messages
-              </Link>
+              {connected && (
+                <Link
+                  to="/messages"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Messages
+                </Link>
+              )}
             </li>
             <li className="nav-item">
               <Link
@@ -109,13 +117,41 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/vosbiens"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Vos biens
-              </Link>
+              {connected && (
+                <Link
+                  to="/vosbiens"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Vos biens
+                </Link>
+              )}
+            </li>
+            <li className="nav-item">
+              {connected && (
+                <Link
+                  to="/account"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  {/* <img
+                className="imgNavbar"
+                src="images/profile-pic-test.png"
+                alt="Profil"
+              /> */}
+                  <svg
+                    className="svgAccount"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 42 49"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M35.1326 24.7148C34.9586 24.5369 34.7509 24.3955 34.5217 24.2987C34.2924 24.2019 34.0462 24.1517 33.7974 24.151C33.5486 24.1503 33.3021 24.1992 33.0723 24.2947C32.8426 24.3903 32.6342 24.5306 32.4592 24.7075C32.2842 24.8844 32.1462 25.0944 32.0532 25.3252C31.9602 25.556 31.914 25.803 31.9175 26.0518C31.9209 26.3006 31.9738 26.5462 32.0731 26.7744C32.1724 27.0025 32.3162 27.2086 32.496 27.3807C34.0867 28.946 35.3488 30.8133 36.2081 32.873C37.0674 34.9327 37.5067 37.1433 37.5001 39.3751C37.5001 41.6684 30.9266 45.0001 20.6251 45.0001C10.3237 45.0001 3.75009 41.6667 3.75009 39.3713C3.74378 37.1549 4.17717 34.9592 5.02517 32.9114C5.87317 30.8636 7.11893 29.0043 8.69035 27.4412C8.86809 27.2679 9.00964 27.0611 9.10681 26.8327C9.20398 26.6043 9.25483 26.3588 9.2564 26.1106C9.25797 25.8624 9.21024 25.6163 9.11597 25.3867C9.02171 25.157 8.88278 24.9484 8.70726 24.7729C8.53174 24.5974 8.32311 24.4584 8.09347 24.3642C7.86384 24.2699 7.61777 24.2222 7.36955 24.2237C7.12133 24.2253 6.87589 24.2762 6.64747 24.3733C6.41905 24.4705 6.2122 24.6121 6.03891 24.7898C4.11783 26.7008 2.59491 28.9739 1.55833 31.4775C0.521761 33.981 -0.00787664 36.6654 8.85219e-05 39.3751C8.85219e-05 45.4643 10.6257 48.7501 20.6251 48.7501C30.6245 48.7501 41.2502 45.4643 41.2502 39.3751C41.2585 36.6471 40.7216 33.945 39.6711 31.4275C38.6205 28.9099 37.0775 26.6277 35.1326 24.7148V24.7148Z" />
+                    <path d="M20.6253 26.25C23.2211 26.25 25.7587 25.4803 27.9171 24.0381C30.0755 22.5959 31.7578 20.546 32.7512 18.1478C33.7446 15.7495 34.0045 13.1105 33.4981 10.5645C32.9917 8.01846 31.7416 5.6798 29.9061 3.84423C28.0705 2.00867 25.7318 0.758631 23.1858 0.252199C20.6398 -0.254232 18.0008 0.00568685 15.6025 0.999088C13.2043 1.99249 11.1544 3.67476 9.71221 5.83315C8.27001 7.99155 7.50024 10.5291 7.50024 13.125C7.50426 16.6048 8.88836 19.9408 11.3489 22.4014C13.8095 24.8619 17.1455 26.246 20.6253 26.25ZM20.6253 3.75001C22.4795 3.75001 24.292 4.29985 25.8337 5.32999C27.3755 6.36013 28.5771 7.8243 29.2866 9.53736C29.9962 11.2504 30.1819 13.1354 29.8201 14.954C29.4584 16.7726 28.5655 18.443 27.2544 19.7542C25.9433 21.0653 24.2728 21.9582 22.4542 22.3199C20.6357 22.6816 18.7507 22.496 17.0376 21.7864C15.3245 21.0768 13.8604 19.8752 12.8302 18.3335C11.8001 16.7918 11.2502 14.9792 11.2502 13.125C11.2532 10.6395 12.2418 8.25664 13.9994 6.49912C15.7569 4.7416 18.1398 3.75294 20.6253 3.75001V3.75001Z" />
+                  </svg>
+                  {props.connectedUser}
+                </Link>
+              )}
             </li>
             <li className="nav-item">
               <Link
@@ -127,15 +163,6 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {connected && (
-            <Link to="/account">
-              <img
-                className="imgNavbar"
-                src="images/profile-pic-test.png"
-                alt="Profil"
-              />
-            </Link>
-          )}
           {button && !connected && (
             <Button buttonStyle="btn--outline">Connexion</Button>
           )}
