@@ -24,14 +24,19 @@ function AddNoteForm() {
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    setDate(moment().format('DD-MM-YYYY hh:mm:ss')); //TODO revoir le format de la date
-    console.log(date);
+    const current = new Date();
+    let month = current.getMonth()+1;
+    if(month<=9){
+      month = `0${month}`;
+    }
+    const dateTest = `${current.getFullYear()}-${month}-${current.getDate()}`;
+    console.log(dateTest);
     await axios
       .post('http://localhost:8081/housingRateApi/addHousingRate', {
         rate: rating / 20,
         comment: comment,
         notedHousingId: notedHousingId,
-        ratingDate: date,
+        ratingDate: dateTest,
       })
       .then((res) => {
         console.log(res.data.housingRateId);
@@ -40,10 +45,9 @@ function AddNoteForm() {
       .catch((error) => {
         console.log(error);
       });
-    //TODO Faire le assign housingRate to Housing
-    /*await axios
+    await axios
           .put(
-            `http://localhost:8081/housingApi/assignHousing/${housingRateId}/${notedHousingId}`
+            `http://localhost:8081/housingApi/assignhousingrate/${notedHousingId}/${housingRateId}`
           )
           .then((res) => {
             console.log(res);
@@ -51,7 +55,7 @@ function AddNoteForm() {
           })
           .catch((error) => {
             console.log(error);
-          });*/
+          });
   };
 
   return (
