@@ -2,6 +2,7 @@ import React from 'react';
 import './AddHouse.css';
 import { useState, useEffect, useContext } from 'react';
 import axios from './api/axios';
+import { View, StyleSheet, Button, Alert } from "react-native";
 
 function ReservationForm(){
 
@@ -74,9 +75,11 @@ function ReservationForm(){
             .catch((error) => {
                 console.log(error);
             });
+            //TODO Popup échec
         }
         else{
-            <div><h1>déjà occupé</h1></div>
+            //TODO Popup échec
+
         }
 
 
@@ -112,5 +115,6 @@ function ReservationForm(){
         </div>
           );
 }
+
 
 export default ReservationForm;
