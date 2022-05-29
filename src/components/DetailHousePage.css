@@ -37,6 +37,21 @@
   margin-bottom: 10px;
 }
 
+.infoHouse input {
+  text-decoration: none;
+  border: none;
+}
+
+.infoHouse input:focus {
+  outline: none;
+}
+
+.infoHouse-h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .infoHouse h2 {
   font-weight: 300;
   margin-bottom: 20px;
@@ -52,6 +67,28 @@
 
 .infoHouse h4 {
   font-weight: 500;
+}
+
+.infoHouse-h4 {
+  font-weight: 500;
+  font-size: 16px;
+  width: 170px;
+}
+
+.infoHouse-number {
+  font-weight: 500;
+  font-size: 30px;
+  width: 50px;
+}
+
+.infoHouse-h3 {
+  font-weight: 500;
+  font-size: 16px;
+  width: 100px;
+}
+
+.infoHouse-select {
+  margin-top: 20px;
 }
 
 .infoHouse h3 svg {
@@ -166,6 +203,10 @@
 .message-h1 {
   font-weight: 500;
   font-size: 20px;
+}
+
+.leftSaveButton {
+  margin-left: 0;
 }
 
 @media screen and (max-width: 768px) {

@@ -18,7 +18,7 @@ section {
   border-radius: 20px;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -36,11 +36,10 @@ section a:visited {
   color: #fd5951;
 }
 
-form > input[type='text'],
-form > input[type='password'],
-form > input[type='date'],
-form > input[type='email'],
-form > button,
+.form > input[type='text'],
+.form > input[type='password'],
+.form > input[type='date'],
+.form > input[type='email'],
 textarea {
   font-size: 18px;
   padding: 0.25rem;
@@ -51,7 +50,7 @@ textarea {
   background-color: #f5f7f9;
 }
 
-form label {
+.form label {
   margin-top: 1.5rem;
 }
 

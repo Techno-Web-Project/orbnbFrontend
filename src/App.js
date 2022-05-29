@@ -19,10 +19,10 @@ import Messages from './components/pages/Messages';
 import TestBookingStatus from './components/pages/TestBookingStatus';
 import MessagesRecus from './components/pages/MessagesRecus';
 
-
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
   const [connectedId, setConnectedId] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   return (
     <>
@@ -41,6 +41,8 @@ function App() {
                 connectedUser={connectedUser}
                 setConnectedId={(connectedId) => setConnectedId(connectedId)}
                 connectedId={connectedId}
+                setSuccess={(success) => setSuccess(success)}
+                success={success}
               />
             }
           />
@@ -54,7 +56,18 @@ function App() {
           />
           <Route
             path="/account"
-            element={<Account connectedUser={connectedUser} />}
+            element={
+              <Account
+                setConnectedUser={(connectedUser) =>
+                  setConnectedUser(connectedUser)
+                }
+                connectedUser={connectedUser}
+                setConnectedId={(connectedId) => setConnectedId(connectedId)}
+                connectedId={connectedId}
+                setSuccess={(success) => setSuccess(success)}
+                success={success}
+              />
+            }
           />
           <Route
             path="/vosbiens"
@@ -81,7 +94,6 @@ function App() {
             path="/messages"
             element={<MessagesRecus connectedId={connectedId} />}
           />
-
         </Routes>
       </Router>
       <Footer />

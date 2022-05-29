@@ -32,7 +32,7 @@ function Reservations(props) {
           return <FetchHouse bookingUrl={booking.housingBookedId} />;
         })}
       </div>
-      <Link to="/" className="addHouse profileButton formButton">
+      <Link to="/" className="addHouse baseButton plainButton">
         <svg
           width="20"
           height="20"

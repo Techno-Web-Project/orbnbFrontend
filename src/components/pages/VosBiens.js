@@ -50,7 +50,7 @@ function VosBiens(props) {
           </ul>
         </div>
       </div>
-      <Link to="/add" className="addHouse profileButton formButton">
+      <Link to="/add" className="addHouse baseButton plainButton">
         <svg
           width="20"
           height="20"

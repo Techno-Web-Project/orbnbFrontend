@@ -106,7 +106,7 @@ const Register = () => {
         <section>
           <h1>Vous êtes inscrits !</h1>
           <p>
-            <button href="/connexion" className="profileButton formButton">
+            <button href="/connexion" className="baseButton plainButton">
               Connexion
             </button>
           </p>
@@ -121,7 +121,7 @@ const Register = () => {
             {errMsg}
           </p>
           <h1>Inscris-toi</h1>
-          <form onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="username">
               Login
               <FontAwesomeIcon
@@ -287,7 +287,7 @@ const Register = () => {
               Must match the first password input field.
             </p>
             <button
-              className="formButton"
+              className="baseButton plainButton"
               disabled={!validName || !validPwd || !validMatch ? true : false}
             >
               Inscription

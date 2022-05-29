@@ -83,7 +83,7 @@ function ReservationForm(props) {
   return (
     <div className="reservationForm">
       <h4>Réserver ce logement</h4>
-      <form onSubmit={HandleSubmit}>
+      <form className="form" onSubmit={HandleSubmit}>
         <label htmlFor="startDate">
           Du
           <input
@@ -108,7 +108,7 @@ function ReservationForm(props) {
           />
         </label>
 
-        <button className="reserveButton">Réserver</button>
+        <button className="baseButton reserveButton">Réserver</button>
       </form>
     </div>
   );

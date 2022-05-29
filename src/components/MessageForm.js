@@ -62,7 +62,7 @@ function MessageForm(props) {
 
   return (
     <div>
-      <form onSubmit={HandleSubmit}>
+      <form className="form" onSubmit={HandleSubmit}>
         <input
           type="text"
           id="text"
@@ -71,7 +71,7 @@ function MessageForm(props) {
           value={text}
           required
         />
-        <button className="formButton">Envoyer</button>
+        <button className="baseButton plainButton">Envoyer</button>
       </form>
     </div>
   );

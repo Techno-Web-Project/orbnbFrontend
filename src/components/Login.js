@@ -49,7 +49,7 @@ function Login(props) {
             <button
               href="#"
               onClick={handleLogout}
-              className="profileButton formButton logoutButton"
+              className="baseButton plainButton logoutButton"
             >
               <svg
                 width="20"
@@ -74,7 +74,7 @@ function Login(props) {
       ) : (
         <section>
           <h1>Connecte-toi</h1>
-          <form onSubmit={HandleSubmit}>
+          <form className="form" onSubmit={HandleSubmit}>
             <label htmlFor="username">Login</label>
             <input
               type="text"
@@ -93,7 +93,7 @@ function Login(props) {
               value={pwd}
               required
             />
-            <button className="formButton">Connexion</button>
+            <button className="baseButton plainButton">Connexion</button>
           </form>
           <p>
             Pas de compte ?<br />

@@ -25,8 +25,8 @@ function AddNoteForm() {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const current = new Date();
-    let month = current.getMonth()+1;
-    if(month<=9){
+    let month = current.getMonth() + 1;
+    if (month <= 9) {
       month = `0${month}`;
     }
     const dateTest = `${current.getFullYear()}-${month}-${current.getDate()}`;
@@ -46,23 +46,23 @@ function AddNoteForm() {
         console.log(error);
       });
     await axios
-          .put(
-            `http://localhost:8081/housingApi/assignhousingrate/${notedHousingId}/${housingRateId}`
-          )
-          .then((res) => {
-            console.log(res);
-            console.log(housingRateId);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+      .put(
+        `http://localhost:8081/housingApi/assignhousingrate/${notedHousingId}/${housingRateId}`
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(housingRateId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="Register">
       <section>
         <h1>Ajouter une note à un logement</h1>
-        <form onSubmit={HandleSubmit}>
+        <form className="form" onSubmit={HandleSubmit}>
           <Rating
             tooltipArray={['nul', 'bof', 'moyen', 'top', 'génial']}
             transition
@@ -79,7 +79,7 @@ function AddNoteForm() {
             value={comment}
             required
           />
-          <button className="formButton">Valider</button>
+          <button className="baseButton plainButton">Valider</button>
         </form>
       </section>
     </div>

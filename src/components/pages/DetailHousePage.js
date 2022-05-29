@@ -17,6 +17,15 @@ function DetailHousePage(props) {
   let rating = 4;
   const connectedUser = props.connectedUser;
   const connectedId = props.connectedId;
+  let isOwnerHouse = false;
+  const [housingType, setHousingType] = useState(house.housingType);
+  const [description, setDescription] = useState(house.description);
+  const [street, setStreet] = useState(house.street);
+  const [postalCode, setPostalCode] = useState(house.postalCode);
+  const [city, setCity] = useState(house.city);
+  const [country, setCountry] = useState(house.country);
+
+  const [beds, setBeds] = useState(house.numberOfBed);
 
   console.log(houseId);
 
@@ -45,6 +54,39 @@ function DetailHousePage(props) {
       });
   }, [personId]);
 
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    await axios
+      .put('http://localhost:8081/housingApi/updateHousing', {
+        id: house.id,
+        description: description ?? house.description,
+        street: street ?? house.street,
+        city: city ?? house.city,
+        country: country ?? house.country,
+        postalCode: postalCode ?? house.postalCode,
+        validate: house.validate,
+        housingType: housingType ?? house.housingType,
+        numberOfBed: beds ?? house.numberOfBed,
+        personId: connectedId,
+        housingPictures: house.housingPictures,
+        bookings: house.bookings,
+        customServices: house.customServices,
+        customConstraints: house.customConstraints,
+        housingRates: house.housingRates,
+        linkedServices: house.linkedServices,
+        linkedConstraints: house.linkedConstraints,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
+  if (connectedId === personId && connectedId != null) {
+    isOwnerHouse = true;
+  } else {
+    isOwnerHouse = false;
+  }
+
   const thumbnail = house.housingPictures?.[0]
     ? `/images/${house.housingPictures[0].fileLocalisation}`
     : '/images/img-home-thumbnail.jpg';
@@ -55,17 +97,95 @@ function DetailHousePage(props) {
         <img src={thumbnail} alt="" />
       </div>
       <div className="houseDetails">
-        <div className="infoHouse">
-          <h1>{house.description}</h1>
+        <form className="infoHouse" onSubmit={HandleSubmit}>
+          {isOwnerHouse && (
+            <input
+              className="infoHouse-h1"
+              type="text"
+              id="description"
+              autoComplete="off"
+              placeholder={house.description}
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
+          )}
+          {!isOwnerHouse && <h1>{house.description}</h1>}
           <h2>
             de {person.firstName ?? 'Anonyme'} {person.lastName}
           </h2>
-          <h4>
-            {house.street}, {house.postalCode}
-          </h4>
-          <h4>
-            {house.city}, {house.country}
-          </h4>
+          {isOwnerHouse && (
+            <h4>
+              <input
+                className="infoHouse-h4"
+                type="text"
+                id="street"
+                autoComplete="off"
+                placeholder={house.street}
+                onChange={(e) => setStreet(e.target.value)}
+                value={street}
+              />
+              ,{' '}
+              <input
+                className="infoHouse-h4"
+                type="text"
+                id="postalCode"
+                autoComplete="off"
+                placeholder={house.postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
+                value={postalCode}
+              />
+            </h4>
+          )}
+          {!isOwnerHouse && (
+            <h4>
+              {house.street}, {house.postalCode}
+            </h4>
+          )}
+          {isOwnerHouse && (
+            <h4>
+              <input
+                className="infoHouse-h3"
+                type="text"
+                id="country"
+                autoComplete="off"
+                placeholder={house.country}
+                onChange={(e) => setCountry(e.target.value)}
+                value={country}
+              />
+              <input
+                className="infoHouse-h3"
+                type="text"
+                id="city"
+                autoComplete="off"
+                placeholder={house.city}
+                onChange={(e) => setCity(e.target.value)}
+                value={city}
+              />
+            </h4>
+          )}
+          {!isOwnerHouse && (
+            <h4>
+              {house.city}, {house.country}
+            </h4>
+          )}
+
+          {isOwnerHouse && (
+            <h4>
+              Type de logement :{' '}
+              <select
+                className="infoHouse-select"
+                type="text"
+                id="housingType"
+                onChange={(e) => setHousingType(e.target.value)}
+                value={housingType}
+              >
+                <option value="HOUSE">Maison</option>
+                <option value="APARTMENT">Appartement</option>
+                <option value="ROOM">Chambre</option>
+              </select>
+            </h4>
+          )}
+
           <div className="stars">
             {Array(rating)
               .fill()
@@ -81,8 +201,20 @@ function DetailHousePage(props) {
                 </svg>
               ))}
           </div>
+
           <h3>
-            {house.numberOfBed}{' '}
+            {isOwnerHouse && (
+              <input
+                className="infoHouse-number"
+                type="number"
+                id="description"
+                autoComplete="off"
+                placeholder={house.numberOfBed}
+                onChange={(e) => setBeds(e.target.value)}
+                value={beds}
+              />
+            )}
+            {!isOwnerHouse && <span>{house.numberOfBed} </span>}
             <svg
               width="30"
               height="30"
@@ -96,10 +228,17 @@ function DetailHousePage(props) {
               />
             </svg>
           </h3>
+
+          {isOwnerHouse && (
+            <button className="baseButton plainButton leftSaveButton">
+              Sauvegarder
+            </button>
+          )}
+
           {connectedUser != null && connectedId != personId && (
             <ReservationForm connectedId={connectedId} />
           )}
-        </div>
+        </form>
 
         <HouseImage house={house} />
       </div>

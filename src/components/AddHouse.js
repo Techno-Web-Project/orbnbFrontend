@@ -51,7 +51,7 @@ function AddHouse(props) {
     <div className="Register">
       <section>
         <h1>Ajouter un logement</h1>
-        <form onSubmit={HandleSubmit}>
+        <form className="form" onSubmit={HandleSubmit}>
           <label htmlFor="description">Description</label>
           <input
             type="text"
@@ -119,7 +119,7 @@ function AddHouse(props) {
             value={numberOfBed}
             required
           />
-          <button className="formButton">Valider</button>
+          <button className="baseButton plainButton">Valider</button>
         </form>
       </section>
     </div>
