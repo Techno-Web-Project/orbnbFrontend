@@ -43,7 +43,7 @@ function Login(props) {
     <div className="Register">
       {success || props.connectedUser != null ? (
         <section className="logout">
-          <h1>You are logged in!</h1>
+          <h1>Vous êtes connectés !</h1>
           <br />
           <p>
             <button
@@ -67,7 +67,7 @@ function Login(props) {
                   </clipPath>
                 </defs>
               </svg>
-              Logout
+              Déconnexion
             </button>
           </p>
         </section>
