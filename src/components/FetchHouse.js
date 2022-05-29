@@ -19,7 +19,12 @@ function FetchHouse(props) {
     fetchHouse();
   }, [props.bookingUrl]);
 
+  console.log('house c est :');
   console.log(house);
+
+  const thumbnail = house.housingPictures?.[0]
+    ? `/images/${house.housingPictures[0].fileLocalisation}`
+    : '/images/img-home-thumbnail.jpg';
 
   return (
     <div className="cards__container">
@@ -27,8 +32,8 @@ function FetchHouse(props) {
         <ul className="cards__item">
           <CardItem
             id={house.id}
-            src={'images/img-home-thumbnail.jpg'}
-            label={house.housingType}
+            src={thumbnail}
+            label={house.housingType ?? 'HOUSE'}
             path={`/house/${house.id}`}
             description={house.description}
             city={house.city}
