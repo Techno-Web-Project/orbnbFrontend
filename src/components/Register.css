@@ -38,6 +38,8 @@ section a:visited {
 
 form > input[type='text'],
 form > input[type='password'],
+form > input[type='date'],
+form > input[type='email'],
 form > button,
 textarea {
   font-size: 18px;
