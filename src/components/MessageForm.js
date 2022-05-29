@@ -57,6 +57,7 @@ function MessageForm(props) {
       .catch((error) => {
         console.log(error);
       });
+    setText('');
   };
 
   return (
