@@ -3,7 +3,6 @@ import './AddHouse.css';
 import { useState, useEffect, useContext } from 'react';
 import axios from './api/axios';
 import { useParams } from 'react-router-dom';
-import { render } from '@testing-library/react';
 
 function ReservationForm(props) {
   const [startDate, setStartDate] = useState('');
