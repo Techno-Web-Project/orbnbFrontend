@@ -16,6 +16,7 @@ import VosBiens from './components/pages/VosBiens';
 import DetailHousePage from './components/pages/DetailHousePage';
 import ReservationForm from './components/ReservationForm';
 import Messages from './components/pages/Messages';
+import MessagesRecus from './components/pages/MessagesRecus';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -71,6 +72,10 @@ function App() {
           <Route path="/update_housing" element={<HousingUpdate />} />
           <Route path="/test_reservation" element={<ReservationForm />} />
           <Route path="/test_message" element={<Messages />} />
+          <Route
+            path="/messages"
+            element={<MessagesRecus connectedId={connectedId} />}
+          />
         </Routes>
       </Router>
       <Footer />

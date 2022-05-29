@@ -88,6 +88,13 @@
   border-radius: 10px;
 }
 
+.messagePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .messageDiv {
   background-color: hsl(0, 0%, 99%);
   margin-top: 50px;
@@ -98,16 +105,21 @@
   box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.15);
 }
 
-.messageListes {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 80px;
+.messageRecus {
+  margin-bottom: 50px;
 }
 
 .messageContainer {
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
+  margin-top: 20px;
+}
+
+.messageContainer2 {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
   margin-top: 20px;
 }
 
@@ -120,17 +132,32 @@
   font-weight: 400;
   font-size: 18px;
   margin-block: 5px;
-  max-width: 220px;
+  max-width: 500px;
   text-align: right;
 }
 
-.messageContainer h3 {
+.message2 {
+  background-color: #fd5951;
+  padding-inline: 12px;
+  padding-block: 6px;
+  border-radius: 20px 20px 20px 0px;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  margin-block: 5px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.messageContainer h3,
+.messageContainer2 h3 {
   font-weight: 400;
   font-size: 10px;
   color: #cccccc;
 }
 
-.messageContainer h4 {
+.messageContainer h4,
+.messageContainer2 h4 {
   font-weight: 400;
   font-size: 12px;
   color: grey;

@@ -104,8 +104,7 @@ function DetailHousePage(props) {
         <HouseImage house={house} />
       </div>
       <div className="messageDiv">
-        <div className="messageListes">
-          <MessagesReceivedList personId={personId} />
+        <div className="messageRecus">
           <MessagesSendList connectedId={connectedId} />
         </div>
         <MessageForm personId={personId} connectedId={connectedId} />

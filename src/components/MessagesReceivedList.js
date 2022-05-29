@@ -39,9 +39,9 @@ function MessagesReceivedList(props) {
       </h1>
       <ul className="receivedList">
         {messagesReceived.map((message) => (
-          <li className="messageContainer" key={message.messageId}>
+          <li className="messageContainer2" key={message.messageId}>
             <h3> le {message.date} </h3>
-            <h2 className="message">{message.text} </h2>
+            <h2 className="message2">{message.text} </h2>
             <h4>
               {persons.map(
                 (person) =>
