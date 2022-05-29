@@ -39,7 +39,7 @@ function VosBiens(props) {
                   src={thumbnail}
                   text="Découvrez cette magnifique propriété située dans le centre de Sydney"
                   label={house.housingType}
-                  path="/Reservations"
+                  path={`/house/${house.id}`}
                   description={house.description}
                   city={house.city}
                   country={house.country}

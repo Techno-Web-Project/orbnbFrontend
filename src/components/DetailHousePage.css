@@ -1,0 +1,81 @@
+.detailedHouse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.houseImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.houseDetails {
+  display: flex;
+  margin-top: 50px;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.houseImage img {
+  width: 100%;
+}
+
+.infoHouse {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoHouse h1 {
+  margin-bottom: 10px;
+}
+
+.infoHouse h2 {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.infoHouse h3 {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.infoHouse h4 {
+  font-weight: 500;
+}
+
+.infoHouse h3 svg {
+  margin-left: 8px;
+}
+
+.each-slide img {
+  height: 400px;
+}
+
+.each-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-container {
+  width: 800px;
+}
+
+.react-slideshow-wrapper {
+  height: 400px;
+}
+
+.stars {
+  margin-top: 20px;
+  display: flex;
+}

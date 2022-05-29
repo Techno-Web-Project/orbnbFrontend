@@ -55,7 +55,7 @@ function Cards(props) {
                     src={thumbnail}
                     text="Découvrez cette magnifique propriété située dans le centre de Sydney"
                     label="Maison"
-                    path="/Reservations"
+                    path={`/house/${house.id}`}
                     description={house.description}
                     city={house.city}
                     country={house.country}

@@ -13,6 +13,7 @@ import AddHousingNotePage from './components/pages/AddHousingNotePage';
 import HousingUpdate from './components/pages/HousingUpdate';
 import Footer from './components/Footer';
 import VosBiens from './components/pages/VosBiens';
+import DetailHousePage from './components/pages/DetailHousePage';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -54,6 +55,7 @@ function App() {
             path="/vosbiens"
             element={<VosBiens connectedUser={connectedUser} />}
           />
+          <Route path="/house/:id" element={<DetailHousePage />} />
           <Route path="/add" element={<AddPage connectedId={connectedId} />} />
           <Route path="/add_note" element={<AddHousingNotePage />} />
           <Route path="/update_housing" element={<HousingUpdate />} />
