@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 
 function SearchComponent(props) {
   const [city, setCity] = useState('Monaco');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const cities = [
     'Monaco',
     'Paris',
@@ -89,18 +91,32 @@ function SearchComponent(props) {
       <div className="search-element">
         <div className="search-dates">
           <h3 className="search-h3">ARRIVEE</h3>
-          <h2 className="search-h2">Ven 14 Jan</h2>
+          <input
+            className="search-h2"
+            type="date"
+            id="startDate"
+            autoComplete="off"
+            onChange={(e) => setStartDate(e.target.value)}
+            value={startDate}
+            required
+          />
           <div className="minus-plus">
-            <button className="search-button">moins</button>
-            <button className="search-button">plus</button>
+            <button className="search-button">vers 15h00</button>
           </div>
         </div>
         <div className="search-dates">
           <h3 className="search-h3">DEPART</h3>
-          <h2 className="search-h2">Lun 17 Jan</h2>
+          <input
+            className="search-h2"
+            type="date"
+            id="startDate"
+            autoComplete="off"
+            onChange={(e) => setEndDate(e.target.value)}
+            value={endDate}
+            required
+          />
           <div className="minus-plus">
-            <button className="search-button">moins</button>
-            <button className="search-button">plus</button>
+            <button className="search-button">vers 10h00</button>
           </div>
         </div>
       </div>

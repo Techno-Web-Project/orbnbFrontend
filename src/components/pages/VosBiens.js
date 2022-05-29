@@ -37,7 +37,6 @@ function VosBiens(props) {
                 <CardItem
                   id={house.id}
                   src={thumbnail}
-                  text="Découvrez cette magnifique propriété située dans le centre de Sydney"
                   label={house.housingType}
                   path={`/house/${house.id}`}
                   description={house.description}
