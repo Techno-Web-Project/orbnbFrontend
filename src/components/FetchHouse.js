@@ -33,7 +33,7 @@ function FetchHouse(props) {
           <CardItem
             id={house.id}
             src={thumbnail}
-            label={house.housingType}
+            label={house.housingType ?? 'HOUSE'}
             path={`/house/${house.id}`}
             description={house.description}
             city={house.city}
