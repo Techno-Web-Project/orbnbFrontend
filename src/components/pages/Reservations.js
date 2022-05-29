@@ -23,13 +23,15 @@ function Reservations(props) {
   }, [props.connectedUser]);
 
   return (
-    <div className="biens-div">
+    <div className="reservations-div">
       <h1>Vos Réservations</h1>
       {console.log('booking est égale à :')}
-      {console.log(booking)}
-      {booking.map((booking) => {
-        return <FetchHouse bookingUrl={booking.housingBookedId} />;
-      })}
+      {console.log}
+      <div className="cards__container">
+        {booking.map((booking) => {
+          return <FetchHouse bookingUrl={booking.housingBookedId} />;
+        })}
+      </div>
       <Link to="/" className="addHouse profileButton formButton">
         <svg
           width="20"

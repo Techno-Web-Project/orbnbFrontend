@@ -27,22 +27,20 @@ function FetchHouse(props) {
     : '/images/img-home-thumbnail.jpg';
 
   return (
-    <div className="cards__container">
-      <div className="card__wrapper">
-        <ul className="cards__item">
-          <CardItem
-            id={house.id}
-            src={thumbnail}
-            label={house.housingType ?? 'HOUSE'}
-            path={`/house/${house.id}`}
-            description={house.description}
-            city={house.city}
-            country={house.country}
-            numberOfBed={house.numberOfBed}
-            rating={4}
-          />
-        </ul>
-      </div>
+    <div className="card__wrapper">
+      <ul className="cards__item">
+        <CardItem
+          id={house.id}
+          src={thumbnail}
+          label={house.housingType ?? 'HOUSE'}
+          path={`/house/${house.id}`}
+          description={house.description}
+          city={house.city}
+          country={house.country}
+          numberOfBed={house.numberOfBed}
+          rating={4}
+        />
+      </ul>
     </div>
   );
 }
