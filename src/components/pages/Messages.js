@@ -1,7 +1,7 @@
 import React from 'react';
 import MessagesSendList from '../message/MessagesSendList';
 import MessagesReceivedList from '../message/MessagesReceivedList';
-
+import MessageForm from '../message/MessageForm';
 
 
 function Messages() {
@@ -9,6 +9,7 @@ function Messages() {
     <>
       <MessagesSendList />
       <MessagesReceivedList />
+      <MessageForm />
     </>
   );
 }
