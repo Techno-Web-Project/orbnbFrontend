@@ -42,6 +42,7 @@ function ReservationForm(props) {
           bookingStartDate: startDate,
           bookingEndDate: endDate,
           housingBookedId: housingId,
+          bookingStatus: 'PENDING',
         })
         .then((res) => {
           console.log(res.data.bookingId);
