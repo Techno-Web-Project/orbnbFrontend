@@ -11,7 +11,6 @@ import './Button.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
 
 const Register = () => {
   const userRef = useRef();
@@ -20,6 +19,14 @@ const Register = () => {
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  const [birthDate, setBirthDate] = useState('');
+
+  const [email, setEmail] = useState('');
 
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
@@ -51,7 +58,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if button enabled with JS hack
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
@@ -60,20 +66,26 @@ const Register = () => {
     }
     try {
       const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd }),
+        'http://localhost:8081/personApi/addPerson',
         {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
+          login: user,
+          password: pwd,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          birthDate: birthDate,
+          phoneNumber: phoneNumber,
         }
       );
       console.log(response?.data);
-      console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
       setUser('');
+      setEmail('');
+      setBirthDate('');
+      setFirstName('');
+      setLastName('');
+      setPhoneNumber('');
       setPwd('');
       setMatchPwd('');
     } catch (err) {
@@ -92,9 +104,11 @@ const Register = () => {
     <div className="Register">
       {success ? (
         <section>
-          <h1>Success!</h1>
+          <h1>Vous êtes inscrits !</h1>
           <p>
-            <a href="#">Sign In</a>
+            <button href="/connexion" className="profileButton formButton">
+              Connexion
+            </button>
           </p>
         </section>
       ) : (
@@ -145,6 +159,61 @@ const Register = () => {
               <br />
               Letters, numbers, underscores, hyphens allowed.
             </p>
+
+            <label htmlFor="name">Prénom</label>
+            <input
+              type="text"
+              id="firstName"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+              required
+            />
+
+            <label htmlFor="name">Nom</label>
+            <input
+              type="text"
+              id="lastName"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              required
+            />
+
+            <label htmlFor="phone">Numéro de Téléphone</label>
+            <input
+              type="text"
+              id="birthDate"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={phoneNumber}
+              required
+            />
+
+            <label htmlFor="date">Date de naissance</label>
+            <input
+              type="date"
+              id="birthDate"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setBirthDate(e.target.value)}
+              value={birthDate}
+              required
+            />
+
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
 
             <label htmlFor="password">
               Mot de passe

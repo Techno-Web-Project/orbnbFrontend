@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import '../DetailHousePage.css';
 import HouseImage from '../HouseImage';
 import ReservationForm from '../ReservationForm';
+import MessagesSendList from '../MessagesSendList';
+import MessagesReceivedList from '../MessagesReceivedList';
+import MessageForm from '../MessageForm';
 
 function DetailHousePage(props) {
   const [house, setHouse] = useState('');
@@ -99,6 +102,12 @@ function DetailHousePage(props) {
         </div>
 
         <HouseImage house={house} />
+      </div>
+      <div className="messageDiv">
+        <div className="messageRecus">
+          <MessagesSendList connectedId={connectedId} />
+        </div>
+        <MessageForm personId={personId} connectedId={connectedId} />
       </div>
     </div>
   );
