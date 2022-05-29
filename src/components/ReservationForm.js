@@ -2,14 +2,17 @@ import React from 'react';
 import './AddHouse.css';
 import { useState, useEffect, useContext } from 'react';
 import axios from './api/axios';
+import { useParams } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
-function ReservationForm() {
-  const [housingId, setHousingId] = useState(6); //TODO mettre l'id du housing sur lequel on est
-  const [renterId, setRenterId] = useState(3); //TODO mettre l'id de la personne connectée
+function ReservationForm(props) {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const params = useParams();
   let bookingAvailable = false;
   let bookingId = 0;
+  const housingId = params.id;
+  const renterId = props.connectedId;
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +36,7 @@ function ReservationForm() {
         console.log(err);
       });
 
-    if (bookingAvailable == true) {
+    if (bookingAvailable === true) {
       await axios
         .post('http://localhost:8081/bookingApi/addBooking', {
           bookingDate: bookingDate,
@@ -73,16 +76,16 @@ function ReservationForm() {
         });
       //TODO Popup échec
     } else {
-      //TODO Popup échec
+      console.log('echec');
     }
   };
 
   return (
-    <div className="Register">
-      <section>
-        <h1>Réserver ce logement</h1>
-        <form onSubmit={HandleSubmit}>
-          <label htmlFor="startDate">Date de début</label>
+    <div className="reservationForm">
+      <h4>Réserver ce logement</h4>
+      <form onSubmit={HandleSubmit}>
+        <label htmlFor="startDate">
+          Du
           <input
             type="date"
             id="startDate"
@@ -91,7 +94,10 @@ function ReservationForm() {
             value={startDate}
             required
           />
-          <label htmlFor="endDate">Date de fin</label>
+        </label>
+
+        <label htmlFor="endDate">
+          Au
           <input
             type="date"
             id="endDate"
@@ -100,9 +106,10 @@ function ReservationForm() {
             value={endDate}
             required
           />
-          <button className="formButton">Réserver</button>
-        </form>
-      </section>
+        </label>
+
+        <button className="reserveButton">Réserver</button>
+      </form>
     </div>
   );
 }

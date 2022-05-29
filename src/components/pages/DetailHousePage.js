@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../DetailHousePage.css';
 import HouseImage from '../HouseImage';
+import ReservationForm from '../ReservationForm';
 
 function DetailHousePage(props) {
   const [house, setHouse] = useState('');
@@ -11,6 +12,8 @@ function DetailHousePage(props) {
   const houseId = params.id;
   const [personId, setPersonId] = useState('');
   let rating = 4;
+  const connectedUser = props.connectedUser;
+  const connectedId = props.connectedId;
 
   console.log(houseId);
 
@@ -90,6 +93,9 @@ function DetailHousePage(props) {
               />
             </svg>
           </h3>
+          {connectedUser != null && connectedId != personId && (
+            <ReservationForm connectedId={connectedId} />
+          )}
         </div>
 
         <HouseImage house={house} />

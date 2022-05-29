@@ -14,7 +14,7 @@ import HousingUpdate from './components/pages/HousingUpdate';
 import Footer from './components/Footer';
 import VosBiens from './components/pages/VosBiens';
 import DetailHousePage from './components/pages/DetailHousePage';
-import TestReservation from './components/pages/TestReservation';
+import ReservationForm from './components/ReservationForm';
 
 function App() {
   const [connectedUser, setConnectedUser] = useState(null);
@@ -56,11 +56,19 @@ function App() {
             path="/vosbiens"
             element={<VosBiens connectedUser={connectedUser} />}
           />
-          <Route path="/house/:id" element={<DetailHousePage />} />
+          <Route
+            path="/house/:id"
+            element={
+              <DetailHousePage
+                connectedUser={connectedUser}
+                connectedId={connectedId}
+              />
+            }
+          />
           <Route path="/add" element={<AddPage connectedId={connectedId} />} />
           <Route path="/add_note" element={<AddHousingNotePage />} />
           <Route path="/update_housing" element={<HousingUpdate />} />
-          <Route path="/test_reservation" element={<TestReservation />} />
+          <Route path="/test_reservation" element={<ReservationForm />} />
         </Routes>
       </Router>
       <Footer />

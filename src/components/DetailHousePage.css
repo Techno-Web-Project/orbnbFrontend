@@ -20,6 +20,7 @@
   width: 100%;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-inline: 50px;
 }
 
 .houseImage img {
@@ -79,4 +80,22 @@
 .stars {
   margin-top: 20px;
   display: flex;
+}
+
+.echecReservation {
+  padding: 10px;
+  background-color: #ffe8e8;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .slide-container {
+    width: 600px;
+  }
+  .each-slide img {
+    height: 300px;
+  }
+  .react-slideshow-wrapper {
+    height: 300px;
+  }
 }
