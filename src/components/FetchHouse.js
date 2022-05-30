@@ -28,7 +28,8 @@ function FetchHouse(props) {
 
   return (
     <div className="card__wrapper">
-      <ul className="cards__item">
+      <ul className="cards__item reservationCards">
+        <h3>Booking status : {props.bookingStatus ?? 'PENDING'}</h3>
         <CardItem
           id={house.id}
           src={thumbnail}

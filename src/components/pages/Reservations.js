@@ -29,7 +29,12 @@ function Reservations(props) {
       {console.log}
       <div className="cards__container">
         {booking.map((booking) => {
-          return <FetchHouse bookingUrl={booking.housingBookedId} />;
+          return (
+            <FetchHouse
+              bookingUrl={booking.housingBookedId}
+              bookingStatus={booking.bookingStatus}
+            />
+          );
         })}
       </div>
       <Link to="/" className="addHouse baseButton plainButton">
