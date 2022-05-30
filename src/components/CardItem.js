@@ -1,6 +1,16 @@
 import { Link } from 'react-router-dom';
 
 function CardItem(props) {
+  let rating = 0;
+  let ratingList = [];
+
+  if (props.rating?.length > 0) {
+    ratingList = props.rating?.map((rate) => (rating = rate?.rate + rating));
+    rating = Math.round(ratingList[0] / props.rating?.length);
+  } else {
+    rating = 0;
+  }
+
   return (
     <>
       <li key={props.id} className="cards__individuelle">
@@ -15,7 +25,7 @@ function CardItem(props) {
             </h5>
             <div className="bottomCards">
               <div className="stars">
-                {Array(props.rating)
+                {Array(rating)
                   .fill()
                   .map((_) => (
                     <svg

@@ -9,7 +9,6 @@ import Reservations from './components/pages/Reservations';
 import Account from './components/pages/Account';
 import AddPage from './components/pages/AddPage';
 import Inscription from './components/pages/Inscription';
-import AddHousingNotePage from './components/pages/AddHousingNotePage';
 import HousingUpdate from './components/pages/HousingUpdate';
 import Footer from './components/Footer';
 import VosBiens from './components/pages/VosBiens';
@@ -83,7 +82,6 @@ function App() {
             }
           />
           <Route path="/add" element={<AddPage connectedId={connectedId} />} />
-          <Route path="/add_note" element={<AddHousingNotePage />} />
           <Route path="/update_housing" element={<HousingUpdate />} />
           <Route path="/test_reservation" element={<ReservationForm />} />
           <Route path="/test_message" element={<Messages />} />

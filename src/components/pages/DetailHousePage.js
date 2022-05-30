@@ -8,6 +8,7 @@ import MessagesSendList from '../MessagesSendList';
 import MessageForm from '../MessageForm';
 import HousingUpdate from '../pages/HousingUpdate';
 import { useForm } from 'react-hook-form';
+import AddNoteForm from '../AddNoteForm';
 
 function DetailHousePage(props) {
   const [house, setHouse] = useState('');
@@ -15,7 +16,6 @@ function DetailHousePage(props) {
   const params = useParams();
   const houseId = params.id;
   const [personId, setPersonId] = useState('');
-  let rating = 4;
   const connectedUser = props.connectedUser;
   const connectedId = props.connectedId;
   let isOwnerHouse = false;
@@ -120,6 +120,23 @@ function DetailHousePage(props) {
   } else {
     isOwnerHouse = false;
   }
+
+  let rating = 0;
+
+  const length = house.housingRates?.length;
+
+  let ratingList = house.housingRates?.map(
+    (rate) => (rating = rate.rate + rating)
+  );
+
+  if (length > 0) {
+    rating = Math.round(ratingList[0] / length);
+  } else {
+    rating = 0;
+  }
+
+  console.log('Liste des notes');
+  console.log(ratingList);
 
   const thumbnail = house.housingPictures?.[0]
     ? `/images/${house.housingPictures[0].fileLocalisation}`
@@ -338,6 +355,7 @@ function DetailHousePage(props) {
       </div>
 
       {isOwnerHouse && <HousingUpdate />}
+      {!isOwnerHouse && <AddNoteForm />}
 
       {connectedUser != null && connectedId != personId && personId != null && (
         <div className="messageDiv">

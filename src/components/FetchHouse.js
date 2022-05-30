@@ -38,7 +38,7 @@ function FetchHouse(props) {
           city={house.city}
           country={house.country}
           numberOfBed={house.numberOfBed}
-          rating={4}
+          rating={house.housingRates}
         />
       </ul>
     </div>

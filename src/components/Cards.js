@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function Cards(props) {
   const [houses, setHouses] = useState([]);
+  let ratingValue = 0;
 
   useEffect(() => {
     axios
@@ -49,6 +50,7 @@ function Cards(props) {
                 const thumbnail = house.housingPictures[0]
                   ? `images/${house.housingPictures[0].fileLocalisation}`
                   : 'images/img-home-thumbnail.jpg';
+
                 return (
                   <CardItem
                     id={house.id}
@@ -59,7 +61,7 @@ function Cards(props) {
                     city={house.city}
                     country={house.country}
                     numberOfBed={house.numberOfBed}
-                    rating={4}
+                    rating={house.housingRates}
                   />
                 );
               })}

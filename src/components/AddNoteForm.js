@@ -1,18 +1,19 @@
 import React from 'react';
-import '../AddHouse.css';
+import './AddHouse.css';
 import { useState, useEffect, useContext } from 'react';
-import axios from '../api/axios';
+import axios from './api/axios';
 import moment from 'moment';
 import { Rating } from 'react-simple-star-rating';
+import { useParams } from 'react-router-dom';
 
 function AddNoteForm() {
   const [comment, setComment] = useState('');
-  const [notedHousingId, setNotedHousingId] = useState(5); //TODO mettre l'id du housing sur lequel on est
+  const params = useParams();
+  const notedHousingId = params.id;
   const [date, setDate] = useState();
   const [rating, setRating] = useState(100);
 
   let housingRateId = 0;
-
   // initial rating value
 
   // Catch Rating value
@@ -59,29 +60,27 @@ function AddNoteForm() {
   };
 
   return (
-    <div className="Register">
-      <section>
-        <h1>Ajouter une note à un logement</h1>
-        <form className="form" onSubmit={HandleSubmit}>
-          <Rating
-            tooltipArray={['nul', 'bof', 'moyen', 'top', 'génial']}
-            transition
-            showTooltip
-            onClick={handleRating}
-            ratingValue={rating} /* Available Props */
-          />
-          <label htmlFor="comment">Commentaire</label>
-          <input
-            type="text"
-            id="comment"
-            autoComplete="off"
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-            required
-          />
-          <button className="baseButton plainButton">Valider</button>
-        </form>
-      </section>
+    <div className="notation">
+      <h1>Racontez-nous votre expérience !</h1>
+      <form className="form notationForm" onSubmit={HandleSubmit}>
+        <Rating
+          tooltipArray={['nul', 'bof', 'moyen', 'top', 'génial']}
+          transition
+          showTooltip
+          onClick={handleRating}
+          ratingValue={rating} /* Available Props */
+        />
+        <input
+          type="text"
+          id="comment"
+          autoComplete="off"
+          placeholder="Commentaire"
+          onChange={(e) => setComment(e.target.value)}
+          value={comment}
+          required
+        />
+        <button className="baseButton plainButton">Valider</button>
+      </form>
     </div>
   );
 }
