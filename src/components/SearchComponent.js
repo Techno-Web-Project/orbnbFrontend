@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 
 function SearchComponent(props) {
   const [city, setCity] = useState('Monaco');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const setStartDate = props.setStartDate;
+  const setEndDate = props.setEndDate;
+  const startDate = props.startDate;
+  const endDate = props.endDate;
+
   const cities = [
     'Monaco',
     'Paris',

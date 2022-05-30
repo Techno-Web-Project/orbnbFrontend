@@ -9,6 +9,8 @@ import { useState } from 'react';
 function Home() {
   const [searchTerm, setSearchTerm] = useState('...');
   const [searchBeds, setBeds] = useState(1);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   return (
     <>
@@ -17,8 +19,17 @@ function Home() {
         changeTerm={(searchTerm) => setSearchTerm(searchTerm)}
         addBeds={(searchBeds) => setBeds(searchBeds)}
         searchedBeds={searchBeds}
+        setStartDate={(startDate) => setStartDate(startDate)}
+        setEndDate={(endDate) => setEndDate(endDate)}
+        startDate={startDate}
+        endDate={endDate}
       />
-      <Cards searchedCity={searchTerm} searchedBeds={searchBeds} />
+      <Cards
+        searchedCity={searchTerm}
+        searchedBeds={searchBeds}
+        startDate={startDate}
+        endDate={endDate}
+      />
       <PromotionalCards />
     </>
   );

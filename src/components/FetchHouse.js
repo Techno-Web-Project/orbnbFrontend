@@ -27,21 +27,24 @@ function FetchHouse(props) {
     : '/images/img-home-thumbnail.jpg';
 
   return (
-    <div className="card__wrapper">
-      <ul className="cards__item reservationCards">
-        <h3>Booking status : {props.bookingStatus ?? 'PENDING'}</h3>
-        <CardItem
-          id={house.id}
-          src={thumbnail}
-          label={house.housingType ?? 'HOUSE'}
-          path={`/house/${house.id}`}
-          description={house.description}
-          city={house.city}
-          country={house.country}
-          numberOfBed={house.numberOfBed}
-          rating={house.housingRates}
-        />
-      </ul>
+    <div className="reservationsItems">
+      <h3>
+        Booking status : {props.bookingStatus ?? 'PENDING'}
+        <h4>
+          {props.bookingStartDate} - {props.bookingEndDate}
+        </h4>
+      </h3>
+      <CardItem
+        id={house.id}
+        src={thumbnail}
+        label={house.housingType ?? 'HOUSE'}
+        path={`/house/${house.id}`}
+        description={house.description}
+        city={house.city}
+        country={house.country}
+        numberOfBed={house.numberOfBed}
+        rating={house.housingRates}
+      />
     </div>
   );
 }

@@ -28,14 +28,20 @@ function Reservations(props) {
       {console.log('booking est égale à :')}
       {console.log}
       <div className="cards__container">
-        {booking.map((booking) => {
-          return (
-            <FetchHouse
-              bookingUrl={booking.housingBookedId}
-              bookingStatus={booking.bookingStatus}
-            />
-          );
-        })}
+        <div className="card__wrapper">
+          <ul className="cards__item">
+            {booking.map((booking) => {
+              return (
+                <FetchHouse
+                  bookingUrl={booking.housingBookedId}
+                  bookingStatus={booking.bookingStatus}
+                  bookingStartDate={booking.bookingStartDate}
+                  bookingEndDate={booking.bookingEndDate}
+                />
+              );
+            })}
+          </ul>
+        </div>
       </div>
       <Link to="/" className="addHouse baseButton plainButton">
         <svg

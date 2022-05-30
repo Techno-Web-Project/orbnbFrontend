@@ -31,15 +31,22 @@ function Cards(props) {
               .filter((house) => {
                 if (
                   (props.searchedCity === '' || props.searchedCity === '...') &&
-                  props.searchedBeds === 1
+                  props.searchedBeds === 1 &&
+                  props.startDate === ''
                 ) {
                   return house;
                 } else if (
-                  (house.city
+                  ((house.city
                     .toLowerCase()
                     .includes(props.searchedCity.toLowerCase()) ||
                     props.searchedCity === '...') &&
-                  house.numberOfBed >= props.searchedBeds
+                    house.numberOfBed >= props.searchedBeds) ||
+                  (props.startDate <
+                    house.bookings.bookingStartDate <
+                    props.endDate &&
+                    props.startDate <
+                      house.bookings.bookingEndDate <
+                      props.startDate)
                 ) {
                   return house;
                 } else {
