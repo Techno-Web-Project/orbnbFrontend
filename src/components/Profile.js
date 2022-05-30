@@ -86,7 +86,7 @@ function Profile(props) {
         <h2 className="profileText">{person.login}</h2>
         <h2 className="profileText">{person.phoneNumber}</h2>
         <h2 className="profileText">{person.email}</h2>
-        <h2 className="profileText">{person.password}</h2>
+        <h2 className="profileText">************</h2>
       </div>
       <Link
         to="/connexion"
