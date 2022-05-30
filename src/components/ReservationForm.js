@@ -76,14 +76,13 @@ function ReservationForm(props) {
         });
       //TODO Popup échec
     } else {
-      console.log('echec');
     }
   };
 
   return (
     <div className="reservationForm">
       <h4>Réserver ce logement</h4>
-      <form className="form" onSubmit={HandleSubmit}>
+      <form className="form">
         <label htmlFor="startDate">
           Du
           <input
@@ -108,7 +107,13 @@ function ReservationForm(props) {
           />
         </label>
 
-        <button className="baseButton reserveButton">Réserver</button>
+        <button
+          type="button"
+          className="baseButton reserveButton"
+          onClick={HandleSubmit}
+        >
+          Réserver
+        </button>
       </form>
     </div>
   );
