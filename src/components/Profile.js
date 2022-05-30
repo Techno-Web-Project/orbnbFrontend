@@ -23,7 +23,7 @@ function Profile(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, '');
+  }, []);
 
   const handleLogout = (e) => {
     props.setSuccess(false);

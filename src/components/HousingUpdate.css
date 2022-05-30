@@ -1,0 +1,53 @@
+.serviceContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.serviceDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 340px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px;
+}
+
+.serviceDiv svg {
+  height: 70px;
+  width: 70px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.serviceDiv h1 {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.serviceDiv form {
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceDiv form select {
+  border: none;
+  font-size: 18px;
+  padding: 0.25rem;
+  border-radius: 10px;
+  background-color: #f5f7f9;
+}
+
+.serviceDiv form select:focus {
+  outline: none;
+}

@@ -209,6 +209,31 @@
   margin-left: 0;
 }
 
+.contraintesEtServices {
+  display: flex;
+  margin-top: 30px;
+}
+
+.contraintes {
+  padding: 20px;
+  padding-right: 25px;
+  border-radius: 15px;
+  margin-right: 20px;
+  border: 1px solid #cccccc;
+}
+
+.contraintes h3 {
+  font-size: 20px;
+  color: grey;
+  font-weight: 400;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.contraintes h4 {
+  margin-bottom: 3px;
+}
+
 @media screen and (max-width: 768px) {
   .slide-container {
     width: 600px;

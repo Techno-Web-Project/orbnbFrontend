@@ -7,6 +7,7 @@ import ReservationForm from '../ReservationForm';
 import MessagesSendList from '../MessagesSendList';
 import MessagesReceivedList from '../MessagesReceivedList';
 import MessageForm from '../MessageForm';
+import HousingUpdate from '../pages/HousingUpdate';
 
 function DetailHousePage(props) {
   const [house, setHouse] = useState('');
@@ -26,6 +27,11 @@ function DetailHousePage(props) {
   const [country, setCountry] = useState(house.country);
 
   const [beds, setBeds] = useState(house.numberOfBed);
+  const option = [
+    { value: 'HOUSE', label: 'Maison' },
+    { value: 'APARTMENT', label: 'Appartement' },
+    { value: 'ROOM', label: 'Chambre' },
+  ];
 
   console.log(houseId);
 
@@ -179,9 +185,9 @@ function DetailHousePage(props) {
                 onChange={(e) => setHousingType(e.target.value)}
                 value={housingType}
               >
-                <option value="HOUSE">Maison</option>
-                <option value="APARTMENT">Appartement</option>
-                <option value="ROOM">Chambre</option>
+                {option.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
               </select>
             </h4>
           )}
@@ -235,6 +241,33 @@ function DetailHousePage(props) {
             </button>
           )}
 
+          <div className="contraintesEtServices">
+            {(house.linkedConstraints?.length > 0 ||
+              house.customServices?.length > 0) && (
+              <div className="contraintes">
+                <h3>Contraintes</h3>
+                {house.linkedConstraints?.map((contrainte) => (
+                  <h4>- {contrainte.description}</h4>
+                ))}
+                {house.customConstraints?.map((contrainte) => (
+                  <h4>- {contrainte.description}</h4>
+                ))}
+              </div>
+            )}
+            {(house.linkedServices?.length > 0 ||
+              house.customServices?.length > 0) && (
+              <div className="contraintes">
+                <h3>Services</h3>
+                {house.linkedServices?.map((service) => (
+                  <h4>- {service.description}</h4>
+                ))}
+                {house.customServices?.map((service) => (
+                  <h4>- {service.description}</h4>
+                ))}
+              </div>
+            )}
+          </div>
+
           {connectedUser != null && connectedId != personId && (
             <ReservationForm connectedId={connectedId} />
           )}
@@ -242,6 +275,9 @@ function DetailHousePage(props) {
 
         <HouseImage house={house} />
       </div>
+
+      {isOwnerHouse && <HousingUpdate />}
+
       {connectedUser != null && connectedId != personId && personId != null && (
         <div className="messageDiv">
           <div className="messageRecus">
