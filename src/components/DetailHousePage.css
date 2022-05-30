@@ -301,6 +301,58 @@
   margin-bottom: 20px;
 }
 
+.updateStatus {
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  padding: 20px;
+  margin-inline: 30px;
+  margin-block: 30px;
+}
+
+.updateStatusContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.updateStatus form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updateStatus form h3 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: grey;
+  margin-bottom: 8px;
+}
+
+.updateStatus form h4 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.updateStatus form select {
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: white#f5f7f9;
+  border: none;
+  outline: none;
+  padding-inline: 10px;
+  padding-block: 7px;
+}
+
+.updateStatus form h4 svg {
+  margin-inline: 10px;
+}
+
 @media screen and (max-width: 768px) {
   .slide-container {
     width: 600px;

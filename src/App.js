@@ -82,12 +82,6 @@ function App() {
             }
           />
           <Route path="/add" element={<AddPage connectedId={connectedId} />} />
-          <Route path="/update_housing" element={<HousingUpdate />} />
-          <Route path="/test_reservation" element={<ReservationForm />} />
-          <Route path="/test_message" element={<Messages />} />
-
-          <Route path="/test_booking" element={<TestBookingStatus />} />
-
           <Route
             path="/messages"
             element={<MessagesRecus connectedId={connectedId} />}

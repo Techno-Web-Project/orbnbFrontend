@@ -9,6 +9,7 @@ import MessageForm from '../MessageForm';
 import HousingUpdate from '../pages/HousingUpdate';
 import { useForm } from 'react-hook-form';
 import AddNoteForm from '../AddNoteForm';
+import UpdateBookingStatus from '../UpdateBookingStatus';
 
 function DetailHousePage(props) {
   const [house, setHouse] = useState('');
@@ -318,44 +319,60 @@ function DetailHousePage(props) {
           )}
         </form>
         <div className="photosDiv">
-          <form onSubmit={handleSubmit(onSubmit)} className="imageSubmitForm">
-            <label for="inputTag" className="uploadImage">
-              <svg
-                width="19"
-                height="19"
-                viewBox="0 0 62 56"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M51.274 0.409973H10.974C5.022 0.409973 0 5.43197 0 11.446V44.554C0 50.568 5.022 55.59 11.036 55.59H51.026C56.978 55.59 62.062 50.568 62.062 44.554V11.446C62.31 5.43197 57.288 0.409973 51.274 0.409973V0.409973ZM55.676 44.864C55.676 47.406 53.816 49.576 51.274 49.576H10.974C8.432 49.576 6.262 47.344 6.262 44.864V11.446C6.262 8.90397 8.494 6.73397 10.974 6.73397H50.964C53.506 6.73397 55.676 8.96597 55.676 11.446V44.864Z"
-                  fill="white"
-                />
-                <path
-                  d="M45.632 11.136C44.392 11.136 43.09 11.756 42.16 12.686C41.23 13.616 40.92 14.608 40.92 15.848C40.92 18.39 43.152 20.56 45.632 20.56C48.112 20.56 50.344 18.328 50.344 15.848C50.344 13.368 48.112 11.136 45.632 11.136V11.136Z"
-                  fill="white"
-                />
-                <path
-                  d="M41.85 24.032C40.92 21.8 37.758 21.49 36.208 23.412L32.116 29.426C30.876 31.348 28.024 31.348 26.784 29.426L25.544 27.876C24.304 25.954 21.452 26.326 20.212 28.186L13.206 39.222C11.966 41.454 13.206 44.244 16.058 44.244H45.632C47.864 44.244 49.414 41.702 48.484 39.532L41.85 24.032Z"
-                  fill="white"
-                />
-              </svg>
-            </label>
-            <input
-              id="inputTag"
-              accept="image/*"
-              type="file"
-              className="uploadFile"
-              {...register('picture')}
-            />
-            <button className="saveHousePhoto">Enregistrer la photo</button>
-          </form>
+          {isOwnerHouse && (
+            <form onSubmit={handleSubmit(onSubmit)} className="imageSubmitForm">
+              <label for="inputTag" className="uploadImage">
+                <svg
+                  width="19"
+                  height="19"
+                  viewBox="0 0 62 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M51.274 0.409973H10.974C5.022 0.409973 0 5.43197 0 11.446V44.554C0 50.568 5.022 55.59 11.036 55.59H51.026C56.978 55.59 62.062 50.568 62.062 44.554V11.446C62.31 5.43197 57.288 0.409973 51.274 0.409973V0.409973ZM55.676 44.864C55.676 47.406 53.816 49.576 51.274 49.576H10.974C8.432 49.576 6.262 47.344 6.262 44.864V11.446C6.262 8.90397 8.494 6.73397 10.974 6.73397H50.964C53.506 6.73397 55.676 8.96597 55.676 11.446V44.864Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M45.632 11.136C44.392 11.136 43.09 11.756 42.16 12.686C41.23 13.616 40.92 14.608 40.92 15.848C40.92 18.39 43.152 20.56 45.632 20.56C48.112 20.56 50.344 18.328 50.344 15.848C50.344 13.368 48.112 11.136 45.632 11.136V11.136Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M41.85 24.032C40.92 21.8 37.758 21.49 36.208 23.412L32.116 29.426C30.876 31.348 28.024 31.348 26.784 29.426L25.544 27.876C24.304 25.954 21.452 26.326 20.212 28.186L13.206 39.222C11.966 41.454 13.206 44.244 16.058 44.244H45.632C47.864 44.244 49.414 41.702 48.484 39.532L41.85 24.032Z"
+                    fill="white"
+                  />
+                </svg>
+              </label>
+              <input
+                id="inputTag"
+                accept="image/*"
+                type="file"
+                className="uploadFile"
+                {...register('picture')}
+              />
+              <button className="saveHousePhoto">Enregistrer la photo</button>
+            </form>
+          )}
           <HouseImage house={house} />
         </div>
       </div>
 
       {isOwnerHouse && <HousingUpdate />}
-      {!isOwnerHouse && <AddNoteForm />}
+      {!isOwnerHouse && connectedUser != null && <AddNoteForm />}
+
+      {isOwnerHouse &&
+        house.bookings?.map((house) => (
+          <div className="updateStatusContainer">
+            <UpdateBookingStatus
+              bookingId={house.bookingId}
+              bookingDate={house.bookingDate}
+              bookingStartDate={house.bookingStartDate}
+              bookingEndDate={house.bookingEndDate}
+              housingBookedId={house.housingBookedId}
+              bookingStatus={house.housingBookedId}
+            />
+          </div>
+        ))}
 
       {connectedUser != null && connectedId != personId && personId != null && (
         <div className="messageDiv">
