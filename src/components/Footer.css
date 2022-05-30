@@ -4,5 +4,15 @@
   background-color: #f5f5f5;
   min-height: 200px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.logoFooter{
+  width:25px;
+}
+
+.pFooter{
+  margin-left : 40px;
+  margin-top : -24px;
+  margin-bottom : -15px;
 }
