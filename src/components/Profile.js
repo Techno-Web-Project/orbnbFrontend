@@ -2,14 +2,28 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Button.css';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 function Profile(props) {
   const [person, setPerson] = useState('');
+  const { register, handleSubmit } = useForm();
+  const [pictureId, setPictureId] = useState('');
 
-  //const dispatch = useDispatch()
-  //const [imagePreview, setImagePreview] = useState(null)
-  //const [imageData, setImageData] = useState(null)
-  //const {image} = useSelector(state => state.upload)
+  const onSubmit = async (data) => {
+    console.log(data);
+    // await axios
+    //     .post('http://localhost:8081/pictureApi/addPicture', {
+    //       title: 'Photo de profil',
+    //       fileLocalisation: data.picture[0].name,
+    //     })
+    //     .then((res) => {
+    //       setPictureId(res.data)
+    //     })
+    //   await axios
+    //     .put(
+    //       `http://localhost:8081/housingApi/assignPictureToHousing/${housingId}/${pictureId}`
+    //     )
+  };
 
   useEffect(() => {
     axios
@@ -33,7 +47,7 @@ function Profile(props) {
   };
 
   return (
-    <div className="profile-div">
+    <form onSubmit={handleSubmit(onSubmit)} className="profile-div">
       <h1 align="center">Profile</h1>
       <img
         className="profile-pic"
@@ -62,8 +76,10 @@ function Profile(props) {
           accept="image/*"
           type="file"
           className="uploadFile"
+          {...register('picture')}
         />
       </label>
+      <button className="savePhoto">Enregistrer la photo</button>
       <div className="profileTextDiv">
         <h2 className="profileText">{person.firstName}</h2>
         <h2 className="profileText">{person.lastName}</h2>
@@ -72,7 +88,6 @@ function Profile(props) {
         <h2 className="profileText">{person.email}</h2>
         <h2 className="profileText">{person.password}</h2>
       </div>
-
       <Link
         to="/connexion"
         onClick={handleLogout}
@@ -96,7 +111,7 @@ function Profile(props) {
         </svg>
         Déconnexion
       </Link>
-    </div>
+    </form>
   );
 }
 
